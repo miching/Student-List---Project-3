@@ -271,47 +271,6 @@ int randomStudentID(int stdIDList[])
   ID = rand() % diff + minID;
   cout <<ID << endl;
 
-  /*while(repeat)
-  {
-    srand(time(NULL));
-    ID = rand() % diff + minID;
-    cout<<ID <<endl;
-
-    for(int i = 0; i < 10; i ++)
-    {
-
-      if(stdIDList[i] == ID)
-      {
-        cout<< "LIST: " << stdIDList[i] << "RANDOM NUMBER" << ID << endl;
-        doub = true;
-
-      }
-
-    }
-
-    if(!doub)
-    {
-
-      repeat = false;
-      for(int i = 0; i < 10; i ++)
-      {
-
-        if(stdIDList[i] == 0)
-        {
-
-         stdIDList[i] = ID;
-         break;
-         cout <<"TEST";
-
-        }
-
-      }
-
-    }
-
-  }
-
-  return ID;
-*/
+  
 return ID;
 }
