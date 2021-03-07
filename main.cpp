@@ -115,8 +115,8 @@ void populate (Student **studentPtr)
   for (int i = 0; i < 10; i++)
   {
 
-    *studentPtr = new Student;
-    studentPtr++;
+    *stdPtr = new Student;
+    stdPtr++;
 
   }
   
@@ -139,11 +139,33 @@ void populate (Student **studentPtr)
   **creatorPtr = {"Sponge Bob", randomStudentID(), 'B', randoBDList[2], "Bikini Bottom"};
   creatorPtr++;
 
+  **creatorPtr = {"Patrick Star", randomStudentID(), 'A', randoBDList[3], "Bikini Bottom"};
+  creatorPtr++;
+
+  **creatorPtr = {"Larry Lobster", randomStudentID(), 'C', randoBDList[4], "Bikini Bottom"};
+  creatorPtr++;
+
+  **creatorPtr = {"Will Smith", randomStudentID(), 'F', randoBDList[5], "Bel-Air"};
+  creatorPtr++;
+
+  **creatorPtr = {"Stephen Curry", randomStudentID(), 'A', randoBDList[6], "San Francisco"};
+  creatorPtr++;
+
+  **creatorPtr = {"Steven Rogers", randomStudentID(), 'C', randoBDList[7], "Brooklyn"};
+  creatorPtr++;
+
+  **creatorPtr = {"Austin Post", randomStudentID(), 'C', randoBDList[8], "Los Angeles"};
+  creatorPtr++;
+
+  **creatorPtr = {"Greg House", randomStudentID(), 'C', randoBDList[9], "New Jersey"};
+  creatorPtr++;
+
 }
 
 void menu()
 {
 
+  cout << endl;
   cout << "1) Display list sorted by Name" << endl;
   cout << "2) Display list sorted by Student ID" << endl;
   cout << "3) Display list sorted by Grade" << endl;
@@ -156,13 +178,16 @@ void menu()
 void display(Student **studentPtr)
 {
 
-  cout << left << setw(20) <<"Name" << 
+  cout <<left << setw(20) <<"Name" << 
     left << setw(12) << "Student ID" <<
     left << setw(8) << "Grade" <<
     left << setw(25) << "Birthday" <<
-    left << setw(10) << "Hometown" <<endl;
+    left << setw(10) << "Hometown" << endl;
+
+  cout << "________________________________________________________________________________" << endl;
 
   Student **temp = studentPtr;
+
   for(int i = 0; i < 10; i++)
   {
 
@@ -184,17 +209,26 @@ void sortByName(Student **studentPtr)
   Student **std1 = studentPtr;
   Student **std2 = studentPtr;
 
-  for(int i = 0; i < 9; i++)
+  for(int i = 0; i < 10; i++)
   {
-    for(int j = 1; j < 10; j++)
+
+    std1 = studentPtr + i;
+    //cout <<"STD1 LOCATION:" <<std1 << endl;
+    //cout <<"StudentPTR LOCATION:" << studentPtr << endl;
+    for(int j = 1; j < 9; j++)
     {
 
-      std1 = studentPtr + i;
       std2 = studentPtr + j;
 
-      if(strcmp( (*std1) -> name, (*std2) -> name) > 0)
+    cout <<"STD1 LOCATION:" <<std1 << endl;
+    cout <<"StudentPTR LOCATION:" << studentPtr << endl;
+      cout<<"NAME1:"<<(*std1) -> name << endl;
+      cout<<"NAME2:"<<(*std2) -> name << endl;
+
+      if(strcmp( (*std1) -> name, (*std2) -> name) < 0)
       {
 
+        
         Student *temp = *std1;
         *std1 = *std2;
         *std2 = temp;
@@ -212,7 +246,31 @@ void sortByName(Student **studentPtr)
 void sortByStudentID(Student **studentPtr)
 {
 
- 
+  //Student **std1 = studentPtr;
+  //Student **std2 = studentPtr;
+
+  for(int i = 0; i < 10; i++)
+  {
+    for(int j = 1; j < 10; j++)
+    {
+
+      Student **std1 = studentPtr+i;
+      Student **std2 = studentPtr+j;
+
+      if((*std2) -> studentID > (*std1) -> studentID ) 
+      {
+
+        Student *temp = *std1;
+        *std1 = *std2;
+        *std2 = temp;
+
+      }
+
+    }
+
+
+
+  }
 
 }
 
