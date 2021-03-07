@@ -26,23 +26,18 @@ void sortByStudentID(Student **studentPtr);
 void sortByGrade(Student **studentPtr);
 void sortByBirthday(Student **studentPtr);
 void sortByHometown(Student **studentPtr);
-myDate randomBirthday();
-int randomStudentID(int stdIDList[]);
+myDate randomBirthday(myDate);
+int randomStudentID();
 
 int main()
 {
   
-  int studentID[10];
   Student *sptrArray[10];           //AN array of student pointers
   Student ** sptr = sptrArray;      //Student pointer pointer
   populate(sptr);   
   myDate bd;                //Pass the pointer to populate funtion
-  *sptrArray[0] = {"Tom Thumb", randomStudentID(studentID), 'C', bd, "Small Ville"};
-  strcpy( (*sptrArray[0]).name, "Tom Thumb");
   
-  *sptrArray[1] = {"Fred Flintstone", randomStudentID(studentID), 'D', bd, "Bedrock"};
-  strcpy( (*sptrArray[1]).name, "Fred Flintstone");
-  //*sptrArray[2] = {"Sponge Bob", randomStudentID(studentID), 'B', randomBirthday(), "Bikini Bottom"};
+
   display(sptr);
   menu();
   int input;
@@ -117,6 +112,7 @@ int main()
 void populate (Student **studentPtr)
 {
 
+  Student **testPtr = studentPtr;
   //10 elements
   for (int i = 0; i < 10; i++)
   {
@@ -125,6 +121,19 @@ void populate (Student **studentPtr)
     studentPtr++;
 
   }
+  
+  myDate randoBDList [10];
+  for(int i = 0; i < 10; i++)
+  {
+
+    myDate randoBD;
+    randoBD.randBirthday();
+    randoBDList[i] = randoBD;
+
+  }
+  **testPtr = {"Tom Thumb", randomStudentID(), 'C', randoBDList[0], "Small Ville"};
+  //**studentPtr = {"Fred Flintstone", randomStudentID(), 'D', randomBirthday(), "Bedrock"};
+  //**studentPtr = {"Sponge Bob", randomStudentID(), 'B', randomBirthday(), "Bikini Bottom"};
 
 }
 
@@ -249,28 +258,24 @@ void sortByHometown(Student **studentPtr)
 
 }
 
-myDate randomBirthday()
+myDate randomBirthday(myDate d)
 {
 
   myDate randomBD;
-  randomBD.randBirthday();
+  d.randBirthday();
   
 }
 
-int randomStudentID(int stdIDList[])
+int randomStudentID()
 {
 
   int minID = 9000;
   int maxID = 9999;
-  int diff = 9999 - 9000 + 1;
-
-  int ID;
-  bool repeat = true;
-  bool doub = false;
-  //srand(time(NULL));
-  ID = rand() % diff + minID;
-  cout <<ID << endl;
-
+  int range = 9999 - 9000 + 1;
   
-return ID;
+  //srand(time(NULL));
+  int ID = rand() % range + minID;
+
+  return ID;
+ 
 }
