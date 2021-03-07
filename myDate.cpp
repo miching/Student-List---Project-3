@@ -378,8 +378,8 @@ string myDate::toString()
    int youngestDate = Greg2Julian(2005, 12, 31);
    int range = oldestDate - youngestDate + 1;
   
-   srand(time(NULL));
-   int birthday = rand() % range + youngestDate;
+   //srand(time(NULL));
+   int birthday = rand() % range + oldestDate;
    Julian2Greg(birthday, year, month, day);
 
 

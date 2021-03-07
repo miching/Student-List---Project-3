@@ -3,7 +3,6 @@
 #include <cstring>
 #include <iomanip>
 #include "myDate.h"
-//#include "myDate.cpp"
 using namespace std;
 
 
@@ -26,7 +25,6 @@ void sortByStudentID(Student **studentPtr);
 void sortByGrade(Student **studentPtr);
 void sortByBirthday(Student **studentPtr);
 void sortByHometown(Student **studentPtr);
-myDate randomBirthday(myDate);
 int randomStudentID();
 
 int main()
@@ -34,9 +32,7 @@ int main()
   
   Student *sptrArray[10];           //AN array of student pointers
   Student ** sptr = sptrArray;      //Student pointer pointer
-  populate(sptr);   
-  myDate bd;                //Pass the pointer to populate funtion
-  
+  populate(sptr);                   //Pass the pointer to populate funtion
 
   display(sptr);
   menu();
@@ -50,7 +46,7 @@ int main()
     if(input == 1)
     {
 
-     // sortByName(sptr);
+      sortByName(sptr);
       display(sptr);
 
     }
@@ -112,7 +108,9 @@ int main()
 void populate (Student **studentPtr)
 {
 
-  Student **testPtr = studentPtr;
+  Student **stdPtr = studentPtr;
+  Student **creatorPtr = studentPtr;
+
   //10 elements
   for (int i = 0; i < 10; i++)
   {
@@ -131,9 +129,15 @@ void populate (Student **studentPtr)
     randoBDList[i] = randoBD;
 
   }
-  **testPtr = {"Tom Thumb", randomStudentID(), 'C', randoBDList[0], "Small Ville"};
-  //**studentPtr = {"Fred Flintstone", randomStudentID(), 'D', randomBirthday(), "Bedrock"};
-  //**studentPtr = {"Sponge Bob", randomStudentID(), 'B', randomBirthday(), "Bikini Bottom"};
+
+  **creatorPtr = {"Tom Thumb", randomStudentID(), 'C', randoBDList[0], "Small Ville"};
+  creatorPtr++;
+
+  **creatorPtr = {"Fred Flintstone", randomStudentID(), 'D', randoBDList[1], "Bedrock"};
+  creatorPtr++;
+
+  **creatorPtr = {"Sponge Bob", randomStudentID(), 'B', randoBDList[2], "Bikini Bottom"};
+  creatorPtr++;
 
 }
 
@@ -155,7 +159,7 @@ void display(Student **studentPtr)
   cout << left << setw(20) <<"Name" << 
     left << setw(12) << "Student ID" <<
     left << setw(8) << "Grade" <<
-    left << setw(18) << "Birthday" <<
+    left << setw(25) << "Birthday" <<
     left << setw(10) << "Hometown" <<endl;
 
   Student **temp = studentPtr;
@@ -165,7 +169,7 @@ void display(Student **studentPtr)
     cout << left<< setw(20) <<(**temp).name <<
       left << setw(12) << (**temp).studentID <<
       left << setw(8) << (**temp).grade << 
-      left << setw(18) << (**temp).birthday.toString() << 
+      left << setw(25) << (**temp).birthday.toString() << 
       left << setw(10) << (**temp).hometown << endl;
 
     temp++;
@@ -177,10 +181,10 @@ void display(Student **studentPtr)
 void sortByName(Student **studentPtr)
 {
 
-  Student **std1;
-  Student **std2;
+  Student **std1 = studentPtr;
+  Student **std2 = studentPtr;
 
-  for(int i = 0; i < 10; i++)
+  for(int i = 0; i < 9; i++)
   {
     for(int j = 1; j < 10; j++)
     {
@@ -191,9 +195,9 @@ void sortByName(Student **studentPtr)
       if(strcmp( (*std1) -> name, (*std2) -> name) > 0)
       {
 
-        Student **temp = std1;
-        strcpy( (*std1) -> name, (*std2) -> name );
-        strcpy( (*std2) -> name, (*temp) -> name );
+        Student *temp = *std1;
+        *std1 = *std2;
+        *std2 = temp;
 
       }
 
@@ -208,32 +212,7 @@ void sortByName(Student **studentPtr)
 void sortByStudentID(Student **studentPtr)
 {
 
-  Student **std1;
-  Student **std2;
-
-  for(int i = 0; i < 10; i++)
-  {
-    for(int j = 1; j < 10; j++)
-    {
-
-      std1 = studentPtr + i;
-      std2 = studentPtr + j;
-
-      if( (*std2) -> studentID > (*std1) -> studentID)
-      {
-
-        Student **temp = std1;
-        (*std1) -> studentID = (*std2) -> studentID;
-        (*std2) -> studentID = (*temp) -> studentID;
-       
-
-      }
-
-    }
-
-
-
-  }
+ 
 
 }
 
@@ -256,14 +235,6 @@ void sortByHometown(Student **studentPtr)
 
 
 
-}
-
-myDate randomBirthday(myDate d)
-{
-
-  myDate randomBD;
-  d.randBirthday();
-  
 }
 
 int randomStudentID()
