@@ -32,7 +32,7 @@ void sortByStudentID(Student **studentPtr);
 void sortByGrade(Student **studentPtr);
 void sortByBirthday(Student **studentPtr);
 void sortByHometown(Student **studentPtr);
-int randomStudentID();
+int randomStudentID(Student **StudentPtr);
 
 int main()
 {
@@ -132,40 +132,44 @@ void populate (Student **studentPtr)
   for(int i = 0; i < 10; i++)
   {
 
+
+    myDate oldestDate(1, 1, 1995);
+    myDate youngestDate(12, 31, 2005);
     myDate randoBD;
-    randoBD.randBirthday();
+
+    randoBD.randBirthday(oldestDate, youngestDate);
     randoBDList[i] = randoBD;
 
   }
 
-  **creatorPtr = {"Tom Thumb", randomStudentID(), 'C', randoBDList[0], "Small Ville"};
+  **creatorPtr = {"Tom Thumb", randomStudentID(studentPtr), 'C', randoBDList[0], "Small Ville"};
   creatorPtr++;
 
-  **creatorPtr = {"Fred Flintstone", randomStudentID(), 'D', randoBDList[1], "Bedrock"};
+  **creatorPtr = {"Fred Flintstone", randomStudentID(studentPtr), 'D', randoBDList[1], "Bedrock"};
   creatorPtr++;
 
-  **creatorPtr = {"Sponge Bob", randomStudentID(), 'B', randoBDList[2], "Bikini Bottom"};
+  **creatorPtr = {"Sponge Bob", randomStudentID(studentPtr), 'B', randoBDList[2], "Bikini Bottom"};
   creatorPtr++;
 
-  **creatorPtr = {"Patrick Star", randomStudentID(), 'A', randoBDList[3], "Bikini Bottom"};
+  **creatorPtr = {"Patrick Star", randomStudentID(studentPtr), 'A', randoBDList[3], "Bikini Bottom"};
   creatorPtr++;
 
-  **creatorPtr = {"Will Smith", randomStudentID(), 'F', randoBDList[4], "Bel-Air"};
+  **creatorPtr = {"Will Smith", randomStudentID(studentPtr), 'F', randoBDList[4], "Bel-Air"};
   creatorPtr++;
 
-  **creatorPtr = {"Michael Ching", randomStudentID(), 'A', randoBDList[5], "San Francisco"};
+  **creatorPtr = {"Michael Ching", randomStudentID(studentPtr), 'A', randoBDList[5], "San Francisco"};
   creatorPtr++;
 
-  **creatorPtr = {"Stephen Curry", randomStudentID(), 'A', randoBDList[6], "Charlotte"};
+  **creatorPtr = {"Stephen Curry", randomStudentID(studentPtr), 'A', randoBDList[6], "Charlotte"};
   creatorPtr++;
 
-  **creatorPtr = {"Steven Rogers", randomStudentID(), 'D', randoBDList[7], "Brooklyn"};
+  **creatorPtr = {"Steven Rogers", randomStudentID(studentPtr), 'D', randoBDList[7], "Brooklyn"};
   creatorPtr++;
 
-  **creatorPtr = {"Austin Post", randomStudentID(), 'C', randoBDList[8], "Los Angeles"};
+  **creatorPtr = {"Austin Post", randomStudentID(studentPtr), 'C', randoBDList[8], "Los Angeles"};
   creatorPtr++;
 
-  **creatorPtr = {"Greg House", randomStudentID(), 'B', randoBDList[9], "New Jersey"};
+  **creatorPtr = {"Greg House", randomStudentID(studentPtr), 'B', randoBDList[9], "New Jersey"};
   creatorPtr++;
 
 }
@@ -363,16 +367,44 @@ void sortByHometown(Student **studentPtr)
 
 }
 
-int randomStudentID()
+int randomStudentID(Student **StudentPtr)
 {
 
   int minID = 9000;
   int maxID = 9999;
-  int range = 9999 - 9000 + 1;
+  int range = maxID - minID + 1;
   
-  //srand(time(NULL));
-  int ID = rand() % range + minID;
+  int ID;
 
+  //srand(time(NULL));
+  //int ID = rand() % range + minID;
+
+  bool repeat = false;
+
+  //check for double ID
+  do
+  {
+    
+    repeat = false;
+    Student **IDPtr = StudentPtr;
+
+    ID = rand() % range + minID;
+    
+    for(int i = 0; i < 10; i ++)
+    {
+
+      if( (*IDPtr) -> studentID == ID)
+      {
+
+        repeat = true;
+
+      }
+
+      IDPtr++;      
+    }
+
+  }while(repeat);
+  
   return ID;
  
 }

@@ -26,7 +26,7 @@ class myDate
     int dayOfYear();
     string dayName();
     string toString();
-    void randBirthday();
+    void randBirthday(myDate, myDate);
     int JDdate();
 
 

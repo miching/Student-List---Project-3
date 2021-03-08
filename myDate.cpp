@@ -371,17 +371,17 @@ string myDate::toString()
   return date;
 }
 
- void myDate::randBirthday()
+ void myDate::randBirthday(myDate oldestDate, myDate youngestDate)
  {
 
-   int oldestDate = Greg2Julian(1995, 1, 1);
-   int youngestDate = Greg2Julian(2005, 12, 31);
-   int range = oldestDate - youngestDate + 1;
-  
+   int old = Greg2Julian(oldestDate.year, oldestDate.month, oldestDate.day);
+   int young = Greg2Julian(youngestDate.year, youngestDate.month, youngestDate.day);
+   int range = old - young + 1;
+   
    //srand(time(NULL));
-   int birthday = rand() % range + oldestDate;
+   int birthday = rand() % range + old;
+   
    Julian2Greg(birthday, year, month, day);
-
 
  }
 
