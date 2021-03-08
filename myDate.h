@@ -34,6 +34,7 @@ class myDate
     string dayName();
     string toString();
     void randBirthday();
+    int JDdate();
 
 
 };

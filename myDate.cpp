@@ -171,7 +171,7 @@ void myDate::display()
     monthName = "December";
 
   }
-
+  
   cout << monthName << " " << day <<", " << year;
 
 }
@@ -382,5 +382,12 @@ string myDate::toString()
    int birthday = rand() % range + oldestDate;
    Julian2Greg(birthday, year, month, day);
 
+
+ }
+
+ int myDate::JDdate()
+ {
+
+   return Greg2Julian(year,month,day);
 
  }

@@ -157,8 +157,8 @@ void populate (Student **studentPtr)
   **creatorPtr = {"Austin Post", randomStudentID(), 'C', randoBDList[8], "Los Angeles"};
   creatorPtr++;
 
-  **creatorPtr = {"Greg House", randomStudentID(), 'C', randoBDList[9], "New Jersey"};
-  creatorPtr++;
+  //**creatorPtr = {"Greg House", randomStudentID(), 'C', randoBDList[9], "New Jersey"};
+  //creatorPtr++;
 
 }
 
@@ -211,21 +211,19 @@ void sortByName(Student **studentPtr)
 
   for(int i = 0; i < 10; i++)
   {
-
-    std1 = studentPtr + i;
-    //cout <<"STD1 LOCATION:" <<std1 << endl;
-    //cout <<"StudentPTR LOCATION:" << studentPtr << endl;
-    for(int j = 1; j < 9; j++)
+    for(int j = i+1; j < 10; j++)
     {
 
+      std1 = studentPtr + i;
       std2 = studentPtr + j;
 
-    cout <<"STD1 LOCATION:" <<std1 << endl;
-    cout <<"StudentPTR LOCATION:" << studentPtr << endl;
-      cout<<"NAME1:"<<(*std1) -> name << endl;
-      cout<<"NAME2:"<<(*std2) -> name << endl;
+      //cout <<"STD1 LOCATION:" <<std1 << endl;
+      //cout <<"StudentPTR LOCATION:" << studentPtr << endl;
+      //cout<<"Name 1:"<<(*std1) -> studentID << endl;
+      //cout<<"Name 2:"<<(*std2) -> studentID << endl;
+      //cout << "ROUND: " << i << endl;
 
-      if(strcmp( (*std1) -> name, (*std2) -> name) < 0)
+      if(strcmp( (*std1) -> name, (*std2) -> name) > 0)
       {
 
         
@@ -246,18 +244,18 @@ void sortByName(Student **studentPtr)
 void sortByStudentID(Student **studentPtr)
 {
 
-  //Student **std1 = studentPtr;
-  //Student **std2 = studentPtr;
+  Student **std1 = studentPtr;
+  Student **std2 = studentPtr;
 
   for(int i = 0; i < 10; i++)
   {
-    for(int j = 1; j < 10; j++)
+    for(int j = i+1; j < 10; j++)
     {
 
-      Student **std1 = studentPtr+i;
-      Student **std2 = studentPtr+j;
+      std1 = studentPtr+i;
+      std2 = studentPtr+j;
 
-      if((*std2) -> studentID > (*std1) -> studentID ) 
+      if( (*std2) -> studentID < (*std1) -> studentID ) 
       {
 
         Student *temp = *std1;
@@ -277,21 +275,93 @@ void sortByStudentID(Student **studentPtr)
 void sortByGrade(Student **studentPtr)
 {
 
+  Student **std1 = studentPtr;
+  Student **std2 = studentPtr;
 
+  for(int i = 0; i < 10; i++)
+  {
+    for(int j = i+1; j < 10; j++)
+    {
+
+      std1 = studentPtr+i;
+      std2 = studentPtr+j;
+
+      if( (*std2) -> grade < (*std1) -> grade ) 
+      {
+
+        Student *temp = *std1;
+        *std1 = *std2;
+        *std2 = temp;
+
+      }
+
+    }
+
+
+
+  }
 
 }
 
 void sortByBirthday(Student **studentPtr)
 {
 
+  Student **std1 = studentPtr;
+  Student **std2 = studentPtr;
 
+  for(int i = 0; i < 10; i++)
+  {
+    for(int j = i+1; j < 10; j++)
+    {
+
+      std1 = studentPtr+i;
+      std2 = studentPtr+j;
+
+      if( (*std2) -> birthday.JDdate() < (*std1) -> birthday.JDdate() ) 
+      {
+
+        Student *temp = *std1;
+        *std1 = *std2;
+        *std2 = temp;
+
+      }
+
+    }
+
+
+
+  }
 
 }
 
 void sortByHometown(Student **studentPtr)
 {
 
+  Student **std1 = studentPtr;
+  Student **std2 = studentPtr;
 
+  for(int i = 0; i < 10; i++)
+  {
+    for(int j = i+1; j < 10; j++)
+    {
+
+      std1 = studentPtr+i;
+      std2 = studentPtr+j;
+
+      if( (*std2) -> hometown < (*std1) -> hometown ) 
+      {
+
+        Student *temp = *std1;
+        *std1 = *std2;
+        *std2 = temp;
+
+      }
+
+    }
+
+
+
+  }
 
 }
 
