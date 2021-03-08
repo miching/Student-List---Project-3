@@ -380,11 +380,11 @@ string myDate::toString()
    
    //srand(time(NULL));
    int birthday = rand() % range + old;
-   
+
    Julian2Greg(birthday, year, month, day);
 
  }
-
+ 
  int myDate::JDdate()
  {
 

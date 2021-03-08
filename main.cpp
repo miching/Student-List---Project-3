@@ -33,6 +33,7 @@ void sortByGrade(Student **studentPtr);
 void sortByBirthday(Student **studentPtr);
 void sortByHometown(Student **studentPtr);
 int randomStudentID(Student **StudentPtr);
+myDate randomBD(myDate, myDate);
 
 int main()
 {
@@ -126,7 +127,8 @@ void populate (Student **studentPtr)
     stdPtr++;
 
   }
-  
+
+  /* 
   myDate randoBDList [10];
   //10 Random Birthdays
   for(int i = 0; i < 10; i++)
@@ -141,35 +143,39 @@ void populate (Student **studentPtr)
     randoBDList[i] = randoBD;
 
   }
+  */
 
-  **creatorPtr = {"Tom Thumb", randomStudentID(studentPtr), 'C', randoBDList[0], "Small Ville"};
+  myDate oldestDate(1, 1, 1995);
+  myDate youngestDate(12, 31, 2005);
+
+  **creatorPtr = {"Tom Thumb", randomStudentID(studentPtr), 'C', randomBD(oldestDate, youngestDate), "Small Ville"};
   creatorPtr++;
 
-  **creatorPtr = {"Fred Flintstone", randomStudentID(studentPtr), 'D', randoBDList[1], "Bedrock"};
+  **creatorPtr = {"Fred Flintstone", randomStudentID(studentPtr), 'D', randomBD(oldestDate, youngestDate), "Bedrock"};
   creatorPtr++;
 
-  **creatorPtr = {"Sponge Bob", randomStudentID(studentPtr), 'B', randoBDList[2], "Bikini Bottom"};
+  **creatorPtr = {"Sponge Bob", randomStudentID(studentPtr), 'B', randomBD(oldestDate, youngestDate), "Bikini Bottom"};
   creatorPtr++;
 
-  **creatorPtr = {"Patrick Star", randomStudentID(studentPtr), 'A', randoBDList[3], "Bikini Bottom"};
+  **creatorPtr = {"Patrick Star", randomStudentID(studentPtr), 'A', randomBD(oldestDate, youngestDate), "Bikini Bottom"};
   creatorPtr++;
 
-  **creatorPtr = {"Will Smith", randomStudentID(studentPtr), 'F', randoBDList[4], "Bel-Air"};
+  **creatorPtr = {"Will Smith", randomStudentID(studentPtr), 'F', randomBD(oldestDate, youngestDate), "Bel-Air"};
   creatorPtr++;
 
-  **creatorPtr = {"Michael Ching", randomStudentID(studentPtr), 'A', randoBDList[5], "San Francisco"};
+  **creatorPtr = {"Michael Ching", randomStudentID(studentPtr), 'A', randomBD(oldestDate, youngestDate), "San Francisco"};
   creatorPtr++;
 
-  **creatorPtr = {"Stephen Curry", randomStudentID(studentPtr), 'A', randoBDList[6], "Charlotte"};
+  **creatorPtr = {"Stephen Curry", randomStudentID(studentPtr), 'A', randomBD(oldestDate, youngestDate), "Charlotte"};
   creatorPtr++;
 
-  **creatorPtr = {"Steven Rogers", randomStudentID(studentPtr), 'D', randoBDList[7], "Brooklyn"};
+  **creatorPtr = {"Steven Rogers", randomStudentID(studentPtr), 'D', randomBD(oldestDate, youngestDate), "Brooklyn"};
   creatorPtr++;
 
-  **creatorPtr = {"Austin Post", randomStudentID(studentPtr), 'C', randoBDList[8], "Los Angeles"};
+  **creatorPtr = {"Austin Post", randomStudentID(studentPtr), 'C', randomBD(oldestDate, youngestDate), "Los Angeles"};
   creatorPtr++;
 
-  **creatorPtr = {"Greg House", randomStudentID(studentPtr), 'B', randoBDList[9], "New Jersey"};
+  **creatorPtr = {"Greg House", randomStudentID(studentPtr), 'B', randomBD(oldestDate, youngestDate), "New Jersey"};
   creatorPtr++;
 
 }
@@ -407,4 +413,13 @@ int randomStudentID(Student **StudentPtr)
   
   return ID;
  
+}
+
+myDate randomBD(myDate oldestDate, myDate youngestDate)
+{
+
+  myDate temp;
+  temp.randBirthday(oldestDate, youngestDate);
+  return temp;
+
 }
