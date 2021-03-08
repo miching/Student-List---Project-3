@@ -1,3 +1,10 @@
+// Michael Ching
+// CECS282-01
+// Project 3 - Student List
+// Due: 3/8/2021
+//
+//  I certify that this program is my own original work. I did not copy any part of this program from any other source. I further certify that I typed each and every line of code in this program.
+
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -110,7 +117,7 @@ void populate (Student **studentPtr)
 
   Student **stdPtr = studentPtr;
   Student **creatorPtr = studentPtr;
-
+ 
   //10 elements
   for (int i = 0; i < 10; i++)
   {
@@ -121,6 +128,7 @@ void populate (Student **studentPtr)
   }
   
   myDate randoBDList [10];
+  //10 Random Birthdays
   for(int i = 0; i < 10; i++)
   {
 
@@ -142,23 +150,23 @@ void populate (Student **studentPtr)
   **creatorPtr = {"Patrick Star", randomStudentID(), 'A', randoBDList[3], "Bikini Bottom"};
   creatorPtr++;
 
-  **creatorPtr = {"Larry Lobster", randomStudentID(), 'C', randoBDList[4], "Bikini Bottom"};
+  **creatorPtr = {"Will Smith", randomStudentID(), 'F', randoBDList[4], "Bel-Air"};
   creatorPtr++;
 
-  **creatorPtr = {"Will Smith", randomStudentID(), 'F', randoBDList[5], "Bel-Air"};
+  **creatorPtr = {"Michael Ching", randomStudentID(), 'A', randoBDList[5], "San Francisco"};
   creatorPtr++;
 
-  **creatorPtr = {"Stephen Curry", randomStudentID(), 'A', randoBDList[6], "San Francisco"};
+  **creatorPtr = {"Stephen Curry", randomStudentID(), 'A', randoBDList[6], "Charlotte"};
   creatorPtr++;
 
-  **creatorPtr = {"Steven Rogers", randomStudentID(), 'C', randoBDList[7], "Brooklyn"};
+  **creatorPtr = {"Steven Rogers", randomStudentID(), 'D', randoBDList[7], "Brooklyn"};
   creatorPtr++;
 
   **creatorPtr = {"Austin Post", randomStudentID(), 'C', randoBDList[8], "Los Angeles"};
   creatorPtr++;
 
-  //**creatorPtr = {"Greg House", randomStudentID(), 'C', randoBDList[9], "New Jersey"};
-  //creatorPtr++;
+  **creatorPtr = {"Greg House", randomStudentID(), 'B', randoBDList[9], "New Jersey"};
+  creatorPtr++;
 
 }
 
@@ -178,14 +186,14 @@ void menu()
 void display(Student **studentPtr)
 {
 
-  cout <<left << setw(20) <<"Name" << 
+  cout <<left << setw(20) <<"Name" <<
     left << setw(12) << "Student ID" <<
     left << setw(8) << "Grade" <<
     left << setw(25) << "Birthday" <<
     left << setw(10) << "Hometown" << endl;
 
-  cout << "________________________________________________________________________________" << endl;
-
+  cout << "¯¯¯¯                ¯¯¯¯¯¯¯¯¯¯  ¯¯¯¯¯   ¯¯¯¯¯¯¯¯                 ¯¯¯¯¯¯¯¯" << endl;
+  //cout << "_______________________________________________________________________________" << endl;
   Student **temp = studentPtr;
 
   for(int i = 0; i < 10; i++)
@@ -235,8 +243,6 @@ void sortByName(Student **studentPtr)
 
     }
 
-
-
   }
 
 }
@@ -265,8 +271,6 @@ void sortByStudentID(Student **studentPtr)
       }
 
     }
-
-
 
   }
 
@@ -297,8 +301,6 @@ void sortByGrade(Student **studentPtr)
 
     }
 
-
-
   }
 
 }
@@ -328,8 +330,6 @@ void sortByBirthday(Student **studentPtr)
 
     }
 
-
-
   }
 
 }
@@ -358,8 +358,6 @@ void sortByHometown(Student **studentPtr)
       }
 
     }
-
-
 
   }
 
