@@ -28,7 +28,6 @@ class myDate
     string toString();
     void randBirthday(myDate, myDate);
     int JDdate();
-
-
+    
 };
 #endif

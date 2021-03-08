@@ -376,8 +376,9 @@ string myDate::toString()
 
    int old = Greg2Julian(oldestDate.year, oldestDate.month, oldestDate.day);
    int young = Greg2Julian(youngestDate.year, youngestDate.month, youngestDate.day);
-   int range = old - young + 1;
-   
+  
+   int range = young - old + 1;
+
    //srand(time(NULL));
    int birthday = rand() % range + old;
 
@@ -388,6 +389,6 @@ string myDate::toString()
  int myDate::JDdate()
  {
 
-   return Greg2Julian(year,month,day);
+  return Greg2Julian(year,month,day);
 
  }

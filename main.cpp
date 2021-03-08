@@ -422,4 +422,33 @@ myDate randomBD(myDate oldestDate, myDate youngestDate)
   temp.randBirthday(oldestDate, youngestDate);
   return temp;
 
+  /*
+  bool repeat = false;
+
+  //Seeded Random Birthday with no repeats
+  do
+  {
+    
+    repeat = false;
+    Student **BDPtr = StudentPtr;
+
+    myDate temp;
+    temp.randBirthday(oldestDate, youngestDate);
+    
+    for(int i = 0; i < 10; i ++)
+    {
+
+      if( (*BDPtr) -> birthday.daysBetween(temp) == 0)
+      {
+
+        repeat = true;
+
+      }
+
+      BDPtr++;      
+    }
+
+  }while(repeat);
+  */
+
 }
